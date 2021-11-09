@@ -8,7 +8,7 @@ var textarea = document.querySelector('textarea')
 // Then apply them to elements on the page
 // YOUR CODE HERE
 textarea.value = window.localStorage.getItem('notes');
-nameSpan.innerText = window.localStorage.getItem('name');
+nameSpan.innerText = document.cookie;
 formEl.onsubmit = function(e) {
   // prevents form submission
   e.preventDefault()
@@ -16,7 +16,7 @@ formEl.onsubmit = function(e) {
   // save textarea's content to localstorage
   // YOUR CODE HERE
 window.localStorage.setItem('notes', textarea.value);
-window.localStorage.setItem('name', nameSpan.innerText);
+document.cookie=nameSpan.innerText;
   // triggers thumbs up animation
   this.elements.save.classList.add('emoji')
 }
@@ -25,6 +25,8 @@ clear.onclick = function() {
   // Clear textarea's value
   // Clear localstorage's content
   // YOUR CODE HERE
+  textarea.value = ""
+  window.localStorage.setItem('notes', textarea.value);
 
   // triggers thumbs up animation
   this.classList.add('emoji')
